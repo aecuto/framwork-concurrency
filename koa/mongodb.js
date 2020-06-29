@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoDB = "mongodb+srv://aecuto:aecuto@aecuto-evbpo.mongodb.net/koa";
+const mongoDB = "mongodb://mongo:27017/koa";
 
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;

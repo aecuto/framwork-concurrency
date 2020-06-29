@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoDB = "mongodb://localhost:27018/express";
+const mongoDB = "mongodb://mongo:27017/express";
 
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;

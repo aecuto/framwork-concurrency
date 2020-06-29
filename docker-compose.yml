@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  express:
+    image: node:14
+    volumes:
+      - ./express/:/app
+    working_dir: /app
+    ports:
+      - 3000:3000
+    environment:
+      WAIT_HOSTS: mongo:27017
+    depends_on:
+      - mongo
+    command: ['yarn', 'start']
+    restart: always
+  fastify:
+    image: node:14
+    volumes:
+      - ./fastify/:/app
+    working_dir: /app
+    ports:
+      - 3001:3001
+    environment:
+      WAIT_HOSTS: mongo:27017
+    depends_on:
+      - mongo
+    command: ['yarn', 'start']
+    restart: always
+  koa:
+    image: node:14
+    volumes:
+      - ./koa/:/app
+    working_dir: /app
+    ports:
+      - 3002:3002
+    environment:
+      WAIT_HOSTS: mongo:27017
+    depends_on:
+      - mongo
+    command: ['yarn', 'start']
+    restart: always
+
+  mongo:
+    image: radiantwf/mongodb-enterprise:latest
+    command: --storageEngine inMemory --inMemorySizeGB 1
+    ports:
+      - 27018:27017
